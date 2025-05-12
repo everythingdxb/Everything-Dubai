@@ -1,0 +1,36 @@
+name: Build & Deploy Digest
+
+on:
+  schedule:
+    # 02:00 UTC ≈ 06:00 UAE
+    - cron:  '0 2 * * *'
+  workflow_dispatch:      # manual run button in the Actions tab
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install deps
+        run: pip install feedparser python-dateutil
+
+      - name: Run script → generate index.html & recipients.txt
+        env:
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+        run: |
+          python dubai_news_scraper.py
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add index.html recipients.txt
+          git diff --quiet && echo "No changes" || git commit -m 'Auto-update digest'
+          git push
