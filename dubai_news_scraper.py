@@ -130,7 +130,7 @@ def build_html(arts):
 <center><table role=presentation width=100% style="max-width:640px;margin:0 auto">
 <tr>
   <td style="padding:0;">
-    <img src="assets/dubai-hero.jpg"
+    <img src="assets/dubai-skyline.png"
          alt="Dubai skyline"
          style="width:100%;max-height:220px;object-fit:cover;display:block;">
     <div style="position:relative;top:-160px;text-align:center;color:#fff;">
