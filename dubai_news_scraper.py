@@ -128,10 +128,23 @@ def build_html(arts):
 <meta name=color-scheme content="light dark"></head>
 <body style="margin:0;padding:0;background:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
 <center><table role=presentation width=100% style="max-width:640px;margin:0 auto">
-<tr><td style="background:#008080;padding:24px 16px;text-align:center">
-  <span style="font-size:32px;font-weight:800;color:#fff">Everything&nbsp;Dubai</span><br>
-  <span style="font-size:14px;color:#e2f7f7">{today}</span>
-</td></tr>
+<tr>
+  <td style="padding:0;">
+    <img src="assets/dubai-hero.jpg"
+         alt="Dubai skyline"
+         style="width:100%;max-height:220px;object-fit:cover;display:block;">
+    <div style="position:relative;top:-160px;text-align:center;color:#fff;">
+      <h1 style="margin:0;font-size:32px;font-weight:800;
+                 text-shadow:0 2px 4px rgba(0,0,0,.6);">
+        Everything&nbsp;Dubai
+      </h1>
+      <p style="margin:0;font-size:14px;
+                text-shadow:0 2px 4px rgba(0,0,0,.6);">
+        {today}
+      </p>
+    </div>
+  </td>
+</tr>
 <tr><td style="padding:24px"><table role=presentation width=100%>{body}</table>
   <div style="text-align:center;padding:18px 0">
     <a href="{mailto}" style="background:#0366d6;color:#fff;font-weight:600;text-decoration:none;
