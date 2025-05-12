@@ -129,11 +129,14 @@ def build_html(arts):
 <body style="margin:0;padding:0;background:#fff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif">
 <center><table role=presentation width=100% style="max-width:640px;margin:0 auto">
 <tr>
-  <td style="padding:0;">
-    <img src="assets/dubai-skyline.png"
+  <td style="padding:0;position:relative;">
+    <!-- #1  the banner image -->
+    <img src="./assets/dubai-skyline.png"
          alt="Dubai skyline"
          style="width:100%;max-height:220px;object-fit:cover;display:block;">
-    <div style="position:relative;top:-160px;text-align:center;color:#fff;">
+
+    <!-- #2  overlay text in bottom-right -->
+    <div style="position:absolute;bottom:12px;right:16px;text-align:right;color:#ffffff;">
       <h1 style="margin:0;font-size:32px;font-weight:800;
                  text-shadow:0 2px 4px rgba(0,0,0,.6);">
         Everything&nbsp;Dubai
