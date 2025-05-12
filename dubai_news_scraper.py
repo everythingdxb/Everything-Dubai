@@ -117,7 +117,7 @@ def build_html(arts):
                   if a.get("image") else "")
         rows.append(f"""
         <tr><td style="padding:0 0 24px 0;">{img_html}
-          <a href="{a.get('link','#')}" style="font:700 17px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+          <a href="{a.get('link','#')}" ≈target="_blank" rel="noopener noreferrer" style="font:700 17px/1.4 -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
              color:#0366d6;text-decoration:none;">{a.get('title','No Dubai articles today.')}</a><br>
           <span style="font-size:13px;color:#555;">{a.get('snippet','')}</span><br>
           <span style="font-size:11px;color:#888;">{a.get('source','')} • {a.get('published','').strftime('%Y-%m-%d %H:%M') if arts else ''}</span>
