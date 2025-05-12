@@ -2,9 +2,9 @@ name: Build & Deploy Digest
 
 on:
   schedule:
-    # 02:00 UTC ≈ 06:00 UAE
+    # 02:00 UTC  ≈ 06:00 UAE every day
     - cron:  '0 2 * * *'
-  workflow_dispatch:      # manual run button in the Actions tab
+  workflow_dispatch:        # manual trigger button
 
 jobs:
   build:
@@ -18,19 +18,19 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Install deps
+      - name: Install dependencies
         run: pip install feedparser python-dateutil
 
-      - name: Run script → generate index.html & recipients.txt
+      - name: Run scraper → generate index.html
         env:
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}   # still available if script uses it locally
         run: |
           python dubai_news_scraper.py
 
-      - name: Commit & push if changed
+      - name: Commit & push if index.html changed
         run: |
           git config user.name  "GitHub Actions"
           git config user.email "actions@github.com"
-          git add index.html recipients.txt
-          git diff --quiet && echo "No changes" || git commit -m 'Auto-update digest'
+          git add index.html                # only index.html
+          git diff --cached --quiet && echo "No page changes" || git commit -m "Auto-update digest"
           git push
